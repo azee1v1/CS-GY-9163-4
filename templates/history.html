@@ -1,0 +1,35 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}History page{% endblock %}
+{% block styles %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">{{ totalnumqueries }}
+        <form id="userquery" name="userquery" class="form-signin" method="POST" action="/history">
+        {{ history_form.csrf_token }}
+        <div id="userid">
+            {{ wtf.form_field(history_form.uname) }}
+        </div>
+        <div id="Submit"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+    <div id="numqueries">{{ totalnumqueries }}</div>
+        <ul>
+            {%- for query in queries %}
+                <li style=“color:blue;”><a href="/history/query{{ query.id }}"><div id="queryid">Query ID: {{ query.id }}</div></a></li>
+                <li style=“color:blue;”><div id="username">Username: {{ query.username }}</div></li>
+            <li style=“color:blue;”><div id="querytext">Query text: {{ query.queryhistory }}</div></li>
+                <li style=“color:blue;”><div id="queryresults">Query Results: {{ query.queryresults }}</div></li>
+            {%- endfor %}
+        </ul>
+    </div>
+{% endblock %}

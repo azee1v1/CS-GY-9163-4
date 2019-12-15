@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Login page{% endblock %}
+{% block styles %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    {% if session.get('user') %}
+    <div id="result">Success</div>
+{% elif request.args.get('no') %}
+  12345676434565456765456
+{% else %}
+  <div id="request">Incorrect</div>
+{% endif %}
+    <form class="form-signin" method="POST" action="/spell_check">
+        {{ spell_check_form.csrf_token }}
+        {{ wtf.form_field(spell_check_form.inputtext) }}
+        <ul>
+        {% for error in spell_check_form.inputtext.errors %}
+            <li style=“color:red;”>{{ error }}</li>
+        {% endfor %}
+        </ul>
+        <h2 class="form-signin-heading">Spell Check</h2>
+    <button type="submit">Enter string to process</button>
+    </form>
+ </div>
+{% endblock %}
+

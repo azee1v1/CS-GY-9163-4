@@ -1,0 +1,9 @@
+version: '3'
+services:
+  flask:
+    image: myflask
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:5000"

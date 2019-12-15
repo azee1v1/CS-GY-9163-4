@@ -1,0 +1,44 @@
+# This file is used by pip to install required python packages
+# Usage: pip3 install -r requirements.txt
+
+# Flask Framework
+Flask==1.1.1
+
+#Jinja2
+Jinja2==2.10.3
+
+# MarkupSafe
+MarkupSafe==1.1.1
+
+# Werkzeug
+Werkzeug==0.16.0
+
+# click-7.0
+click==7.0
+
+# flask-login
+flask-login==0.4.1
+
+# itsdangerous-1.1.0
+itsdangerous==1.1.0
+
+# Flask Packages
+Flask-WTF==0.14.2
+Flask-Bootstrap==3.1.1.2
+
+
+# Flask-Migrate==2.0.2
+# Flask-Script==2.0.5
+Flask-SQLAlchemy==2.4.0
+# Flask-User==1.0.1.5
+
+
+# WTF
+WTForms==2.0.1
+
+# Automated tests
+# pytest==3.0.5
+# pytest-cov==2.4.0
+
+# coverage==3.7.1
+# gunicorn==19.0.0

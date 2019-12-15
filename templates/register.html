@@ -1,0 +1,41 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Registration page{% endblock %}
+{% block styles %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <form class="form-signin" method="POST" action="/register" id="success"> {{ success }}
+        {{ request_form.csrf_token }}
+        {{ wtf.form_field(request_form.uname) }}
+        <ul>
+        {% for error in request_form.uname.errors %}
+            <li style=“color:red;”>{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ wtf.form_field(request_form.pword) }}
+            <ul>
+        {% for error in request_form.pword.errors %}
+            <li style=“color:red;”>{{ error }}</li>
+        {% endfor %}
+        </ul>
+        {{ wtf.form_field(request_form.twofa) }}
+            <ul>
+        {% for error in request_form.twofa.errors %}
+            <li style=“color:red;”>{{ error }}</li>
+        {% endfor %}
+        </ul>
+        <h2 class="form-signin-heading">Sign Up</h2>
+    <button type="submit">Register</button>
+
+    </form>
+ </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Login History page{% endblock %}
+{% block styles %}
+{{ super() }}
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form id="userid" class="form-signin" method="POST" action="/login_history">
+        {{ loginhistory_form.csrf_token }}
+        <div id="userid">
+            {{ wtf.form_field(loginhistory_form.uname) }}
+        </div>
+        <div id="login"></div>
+
+            <button type="submit">Log in</button>
+        </form>
+            <ul>
+            {% for username in login_history_query %}
+                <li style=“color:blue;”><div id="login{{ username.id }}">Login time: <div id="login{{ username.id }}_time">{{ username.datecreated }}</div>Logout time: <div id="logout{{ username.id }}_time">{{ username.logouttime }}</div></div></li>
+            {% endfor %}
+            </ul>
+    </div>
+{% endblock %}
